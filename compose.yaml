@@ -22,42 +22,6 @@ services:
     networks:
       - network
 
-#  mongodb:
-#    container_name: mongodb
-#    image: mongo:latest
-#    restart: unless-stopped
-#    hostname: mongodb
-#    tty: true
-#    environment:
-#      MONGO_INITDB_ROOT_USERNAME: ${MONGODB_USERNAME}
-#      MONGO_INITDB_ROOT_PASSWORD: ${MONGODB_PASSWORD}
-#      MONGO_INITDB_DATABASE: ${MONGODB_DATABASE}
-#    ports:
-#      - "${MONGODB_PORT}:${MONGODB_PORT}"
-#    volumes:
-#      - ./data/mongodb:/data/mongodb
-#    networks:
-#      - network
-#
-#  mongo-express:
-#    image: mongo-express:latest
-#    container_name: mongo-express
-#    restart: unless-stopped
-#    ports:
-#      - "${MONGO_EXPRESS_PORT}:${MONGO_EXPRESS_PORT}"
-#    environment:
-#      ME_CONFIG_MONGODB_ADMINUSERNAME: ${MONGODB_USERNAME}
-#      ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGODB_PASSWORD}
-#      ME_CONFIG_MONGODB_PORT: ${MONGODB_PORT}
-#      ME_CONFIG_MONGODB_SERVER: 'mongodb'
-#      ME_CONFIG_BASICAUTH_USERNAME: ${MONGO_EXPRESS_USERNAME}
-#      ME_CONFIG_BASICAUTH_PASSWORD: ${MONGO_EXPRESS_PASSWORD}
-#      #ME_CONFIG_BASICAUTH: false
-#    depends_on:
-#      - mongodb
-#    networks:
-#      - network
-
   redis:
     container_name: redis
     image: redis:alpine
