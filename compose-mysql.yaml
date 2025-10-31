@@ -62,7 +62,7 @@ services:
 
   redis:
     container_name: redis
-    image: redis:alpine
+    image: valkey/valkey:alpine
     restart: unless-stopped
     ports:
       - "${REDIS_PORT}:${REDIS_PORT}"
@@ -77,3 +77,4 @@ networks:
 volumes:
   caddy_data:
   caddy_config:
+  data:

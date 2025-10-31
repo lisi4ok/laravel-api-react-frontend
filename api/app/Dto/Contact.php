@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Dto;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 
-readonly class Contact
+final readonly class Contact
 {
     public function __construct(
         public string $name,

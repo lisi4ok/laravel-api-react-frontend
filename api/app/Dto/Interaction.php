@@ -1,19 +1,22 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Dto;
 
 use App\Models\Contact;
 use Carbon\Carbon;
 use Carbon\CarbonInterface;
+use DateTimeInterface;
 use Illuminate\Http\Request;
 
-readonly class Interaction
+final readonly class Interaction
 {
     public function __construct(
         public Contact $contact,
         public string $type,
-        public ?string $note = null,
-        public \DateTimeInterface | CarbonInterface | string $timestamp,
+        public ?string $note,
+        public CarbonInterface|DateTimeInterface|string $timestamp,
     ) {
     }
 

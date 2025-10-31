@@ -1,9 +1,9 @@
-FROM dunglas/frankenphp:1.7.0-php8.4-alpine
+FROM dunglas/frankenphp:1.9.1-php8.4-alpine
 
 LABEL authors="Zaio Klepoyshkov <lisi4ok@gmail.com>"
 LABEL description="Alpine Linux | PHP 8.4 | FrankenPHP"
 LABEL version="0.0.1"
-LABEL extensions="php, composer, apcu, bcmath, bz2, calendar, exif, ftp, ffi, geos, grpc, swoole, gd, gettext, gmp, intl, imap, json, ldap, oauth, mbstring, mysqli, opcache, pcntl, pcov, pdo_mysql, pdo_pgsql, pdo_sqlite, pdo_sqlsrv, pdo_oci, pgsql, oci8, sqlsrv, mongodb, cassandra, redis, soap, solr, sockets, decimal, event, ev, dba, sync, csv, xml, yaml, xsl, xlswriter"
+LABEL extensions="php, composer, apcu, bcmath, bz2, calendar, exif, ftp, ffi, geos, gd, gettext, gmp, intl, imap, json, ldap, oauth, mbstring, mysqli, opcache, pcntl, pcov, pdo_mysql, pdo_pgsql, pdo_sqlite, pdo_sqlsrv, pdo_oci, pgsql, oci8, sqlsrv, mongodb, redis, soap, sockets, decimal, event, ev, dba, sync, csv, xml, yaml, xsl, xlswriter"
 
 ARG USER=${USER:-user}
 ARG UID=${UID:-1000}
@@ -72,8 +72,6 @@ RUN install-php-extensions \
     ftp \
     ffi \
     geos \
-    grpc \
-    swoole \
     gd \
     gettext \
     gmp \
@@ -96,10 +94,8 @@ RUN install-php-extensions \
     oci8 \
     sqlsrv \
     mongodb \
-    cassandra \
     redis \
     soap \
-    solr \
     sockets \
     decimal \
     event \
@@ -132,7 +128,6 @@ RUN install-php-extensions \
     ssh2 \
     imagick \
     psr \
-    zephir_parser \
     phalcon \
     ;
 

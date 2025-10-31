@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Services;
 
-use App\Models\Contact as ContactModel;
 use App\Dto\Contact as ContactDto;
+use App\Models\Contact as ContactModel;
 use Illuminate\Database\Eloquent\Collection;
 
-class ContactService
+final class ContactService
 {
     public function getAll(): Collection
     {
@@ -16,7 +18,7 @@ class ContactService
     public function create(ContactDto $dto): ContactModel
     {
         return ContactModel::create([
-            'name'  => $dto->name,
+            'name' => $dto->name,
             'email' => $dto->email,
             'phone' => $dto->phone,
             'company' => $dto->company,
@@ -33,7 +35,7 @@ class ContactService
         $contact = ContactModel::findOrFail($id);
 
         $contact->update([
-            'name'  => $dto->name,
+            'name' => $dto->name,
             'email' => $dto->email,
             'phone' => $dto->phone,
             'company' => $dto->company,

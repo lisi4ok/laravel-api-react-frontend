@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use App\Actions\Interaction\InteractionValidationRules;
+use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateInteractionRequest extends FormRequest
+final class UpdateInteractionRequest extends FormRequest
 {
     use InteractionValidationRules;
 }

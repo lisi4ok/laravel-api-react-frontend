@@ -1,14 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreContactRequest;
-use App\Http\Resources\ContactResource;
-use App\Http\Requests\UpdateContactRequest;
-use App\Services\ContactService;
 use App\Dto\Contact as ContactDto;
+use App\Http\Requests\StoreContactRequest;
+use App\Http\Requests\UpdateContactRequest;
+use App\Http\Resources\ContactResource;
+use App\Services\ContactService;
 
-class ContactController extends Controller
+final class ContactController extends Controller
 {
     public function __construct(protected ContactService $contactService)
     {
@@ -39,16 +41,16 @@ class ContactController extends Controller
     {
         $deleted = $this->contactService->delete($id);
 
-        if (!$deleted) {
+        if (! $deleted) {
             response()->json([
                 'status' => true,
-                'message' => 'Something was wrong'
+                'message' => 'Something was wrong',
             ], 500);
         }
 
         return response()->json([
             'status' => true,
-            'message' => 'Contact deleted successfully'
+            'message' => 'Contact deleted successfully',
         ], 204);
     }
 }

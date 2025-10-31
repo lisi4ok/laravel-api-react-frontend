@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use App\Actions\Contact\ContactValidationRules;
+use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateContactRequest extends FormRequest
+final class UpdateContactRequest extends FormRequest
 {
     use ContactValidationRules;
 }

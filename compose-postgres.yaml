@@ -33,7 +33,7 @@ services:
     ports:
       - "${DB_PORT}:${DB_PORT}"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - ./data/postgres:/var/lib/postgresql/data
     networks:
       - network
 
@@ -56,7 +56,7 @@ services:
 
   redis:
     container_name: redis
-    image: redis:alpine
+    image: valkey/valkey:alpine
     restart: unless-stopped
     ports:
       - "${REDIS_PORT}:${REDIS_PORT}"
@@ -71,4 +71,4 @@ networks:
 volumes:
   caddy_data:
   caddy_config:
-  postgres_data:
+  data:

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Dto\Contact as ContactDto;
 use App\Models\Contact as ContactModel;
 use App\Services\ContactService;
@@ -83,7 +85,7 @@ it('updates a contact', function () {
 
     $updated = $this->service->update($c->id, $dto);
 
-    expect($updated->fresh()->only(['name','email','phone','company']))->toMatchArray([
+    expect($updated->fresh()->only(['name', 'email', 'phone', 'company']))->toMatchArray([
         'name' => 'New',
         'email' => 'new@example.com',
         'phone' => '999',

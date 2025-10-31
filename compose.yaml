@@ -22,16 +22,16 @@ services:
     networks:
       - network
 
-  redis:
-    container_name: redis
-    image: redis:alpine
-    restart: unless-stopped
-    ports:
-      - "${REDIS_PORT}:${REDIS_PORT}"
-    volumes:
-      - ./data/redis:/data/redis
-    networks:
-      - network
+#  redis:
+#    container_name: redis
+#    image: redis:alpine
+#    restart: unless-stopped
+#    ports:
+#      - "${REDIS_PORT}:${REDIS_PORT}"
+#    volumes:
+#      - ./data/redis:/data/redis
+#    networks:
+#      - network
 
 networks:
   network:

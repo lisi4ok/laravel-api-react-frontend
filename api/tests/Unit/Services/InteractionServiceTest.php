@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Dto\Interaction as InteractionDto;
 use App\Models\Contact as ContactModel;
 use App\Models\Interaction as InteractionModel;
@@ -124,7 +126,7 @@ it('updates an interaction', function () {
 
     $updated = $this->service->update($i->id, $dto);
 
-    expect($updated->fresh()->only(['contact_id','type','timestamp','note']))->toMatchArray([
+    expect($updated->fresh()->only(['contact_id', 'type', 'timestamp', 'note']))->toMatchArray([
         'contact_id' => $cNew->id,
         'type' => 'call',
         'timestamp' => '2025-04-02 14:30:00',

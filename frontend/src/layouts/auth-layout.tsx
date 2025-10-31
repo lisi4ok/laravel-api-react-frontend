@@ -11,6 +11,7 @@ export default function AuthLayout({
     description: string;
 }) {
     return (
+        <ThemeProvider>
         <div className="flex min-h-svh flex-col items-center justify-center gap-6 bg-background p-6 md:p-10">
             <div className="w-full max-w-sm">
                 <div className="flex flex-col gap-8">
@@ -36,5 +37,6 @@ export default function AuthLayout({
                 </div>
             </div>
         </div>
+        </ThemeProvider>
     );
 }

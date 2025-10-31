@@ -1,8 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
+use App\Http\Middleware\AddRequestContext;
+// use App\Http\Middleware\RequestsJson;
+// use App\Http\Middleware\ResponsesJson;
+use App\Http\Middleware\InteractsWithJson;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use Illuminate\Http\JsonResponse;
+use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -11,14 +19,19 @@ return Application::configure(basePath: dirname(__DIR__))
         apiPrefix: '',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        //         $middleware->prepend([
+        //             AddRequestContext::class,
+        //         ])->prependToGroup('api', [
+        //             RequestsJson::class,
+        //         ])->appendToGroup('api', [
+        //             ResponsesJson::class,
+        //         ]);
+
         $middleware->prepend([
             AddRequestContext::class,
-        ])->prependToGroup('api', [
-            RequestsJson::class,
         ])->appendToGroup('api', [
-            ResponsesJson::class,
+            InteractsWithJson::class,
         ]);
-
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->renderable(function (HttpExceptionInterface $e) {
@@ -29,7 +42,7 @@ return Application::configure(basePath: dirname(__DIR__))
                 'code' => $e->getStatusCode(),
                 'message' => $e->getMessage(),
             ], $e->getStatusCode(), [
-                'Content-Type' => 'application/json, application/vnd.api+json'
+                'Content-Type' => 'application/json, application/vnd.api+json',
             ], JSON_PRETTY_PRINT);
         });
     })->create();

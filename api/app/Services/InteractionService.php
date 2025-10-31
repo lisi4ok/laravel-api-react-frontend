@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Services;
 
-use App\Models\Interaction as InteractionModel;
 use App\Dto\Interaction as InteractionDto;
+use App\Models\Interaction as InteractionModel;
 use Illuminate\Database\Eloquent\Collection;
 
-class InteractionService
+final class InteractionService
 {
     public function getAll(): Collection
     {

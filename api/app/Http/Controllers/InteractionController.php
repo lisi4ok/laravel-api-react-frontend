@@ -1,14 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreInteractionRequest;
-use App\Http\Resources\InteractionResource;
-use App\Http\Requests\UpdateInteractionRequest;
-use App\Services\InteractionService;
 use App\Dto\Interaction as InteractionDto;
+use App\Http\Requests\StoreInteractionRequest;
+use App\Http\Requests\UpdateInteractionRequest;
+use App\Http\Resources\InteractionResource;
+use App\Services\InteractionService;
 
-class InteractionController extends Controller
+final class InteractionController extends Controller
 {
     public function __construct(protected InteractionService $interactionService)
     {
@@ -43,16 +45,16 @@ class InteractionController extends Controller
     {
         $deleted = $this->interactionService->delete($id);
 
-        if (!$deleted) {
+        if (! $deleted) {
             response()->json([
                 'status' => true,
-                'message' => 'Something was wrong'
+                'message' => 'Something was wrong',
             ], 500);
         }
 
         return response()->json([
             'status' => true,
-            'message' => 'Interaction deleted successfully'
+            'message' => 'Interaction deleted successfully',
         ], 204);
     }
 }

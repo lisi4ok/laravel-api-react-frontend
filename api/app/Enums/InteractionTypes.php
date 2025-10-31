@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Enums;
 
 use App\Traits\ArrayableEnumeration;
@@ -12,5 +14,5 @@ enum InteractionTypes: string
     case HOVER = 'hover';
     case SCROLL = 'scroll';
     case KEYBOARD = 'keyboard';
-    case SWIPE  = 'swipe';
+    case SWIPE = 'swipe';
 }
